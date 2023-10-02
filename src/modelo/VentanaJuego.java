@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
+import Modelo.PanelFondo;
 
 
 
@@ -28,10 +29,18 @@ public class VentanaJuego extends JFrame {
     private ImageIcon imagenIzquierda;
     private final JPanel panelBotones;
     private int indiceArrayAleatorio;
-    
+    //public PanelFondo jpFondoInicial;
     private final ImageIcon[][] arrayDeArraysDeImagenes;
 
-    public VentanaJuego() {
+    public VentanaJuego () {
+        
+        
+          //Configuración del Encabezado
+        /* > PENDIENTE POR MIRAR PARA PONER EL FONDO < jpFondoInicial = new PanelFondo("/modelo/fondo2.png"); 
+        jpFondoInicial.setSize(1400,700);     
+        jpFondoInicial.setLayout(null);
+        add(jpFondoInicial); */
+        
         // Crear arrays de ImageIcon (imágenes)
         ImageIcon[] cuadrados = {
                 new ImageIcon("src/modelo/Cuadrado1.png"),
@@ -92,6 +101,7 @@ public class VentanaJuego extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Botón 'Terminar' presionado");
+                dispose(); //Para cerrar la ventana
                 
                 // Aquí puedes agregar lógica para manejar la acción del botón "Terminar"
                 
@@ -125,6 +135,7 @@ public class VentanaJuego extends JFrame {
             });
 
             panelBotones.add(iconos);
+            // > PENDIENTE POR ARREGLAR < jpFondoInicial.add(iconos);
         }
 
 

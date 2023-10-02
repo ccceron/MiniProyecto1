@@ -10,7 +10,7 @@ import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-class PanelFondo extends JPanel{
+public class PanelFondo extends JPanel{
     ImageIcon imagen;
     String nombre;
     

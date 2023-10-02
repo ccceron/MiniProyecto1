@@ -14,32 +14,36 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import modelo.VentanaJuego;
 
 
-
+//Creo mi clase que hereda de JFrame
 public final class VentanaInicial extends JFrame {
     
     
-    private PanelFondo jpFondoInicial;
+    public PanelFondo jpFondoInicial;
     private JLabel jlNombre;
+    private JLabel jlTitulo;
     private JTextField txtNombre;
-    private JButton btnIngresar; 
-    private JButton btnAyuda;
+    private JButton btnJugar; 
+    private JButton btnInstrucciones;
     
     //Método constructor
     public VentanaInicial(){
         iniciarComponentes();
     }
     
+    //Método donde inicializo todos los componentes que tendrá mi ventana
     private void iniciarComponentes(){
         //Configuración de la ventana
-        setTitle("T A M A Ñ O S");
+        setTitle("Tamaños");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(700,500);
         setLocationRelativeTo(null);
         setVisible(true); 
         setResizable(false);
- 
+        
+        
         Toolkit miPantalla = Toolkit.getDefaultToolkit();
         //para poner icono cambiar ubicacion
         //Image miIcono = miPantalla.getImage("src/imagenes/icono.png");
@@ -54,59 +58,69 @@ public final class VentanaInicial extends JFrame {
         add(jpFondoInicial);
         
         
-        jlNombre = new JLabel("Ingresa tu nombre",SwingConstants.CENTER );
+        //Jlabel donde pondré el titulo
+        jlTitulo = new JLabel("T  A  M  A  Ñ  O  S",SwingConstants.CENTER );
+        jlTitulo.setBounds(150,70, 400,35);
+        jlTitulo.setForeground(Color.GRAY);
+        jlTitulo.setFont(new Font("Agency FB", Font.BOLD, 50)); 
         
-
-        jlNombre.setBounds(150,100, 400,35);
+        //Jlabel donde preguntaré el nombre
+        jlNombre = new JLabel("Ingresa tu nombre",SwingConstants.CENTER );
+        jlNombre.setBounds(150,170, 400,35);
         jlNombre.setForeground(Color.GRAY);
         jlNombre.setFont(new Font("Agency FB", Font.BOLD, 30)); 
         
         //Boton para iniciar juego
-        btnIngresar = new JButton("Jugar");
-        btnIngresar.setFont(new Font("Agency FB", Font.BOLD, 15));
-        btnIngresar.setBounds(290,260, 110,35);
+        btnJugar = new JButton("Jugar");
+        btnJugar.setFont(new Font("Agency FB", Font.BOLD, 15));
+        btnJugar.setBounds(290,300, 110,35);
         
         //Botón para instrucciones
-        btnAyuda = new JButton("Intrucciones");
-        btnAyuda.setFont(new Font("Agency FB", Font.BOLD, 15)); 
-        btnAyuda.setBounds(290,210, 110,35);
+        btnInstrucciones = new JButton("Intrucciones");
+        btnInstrucciones.setFont(new Font("Agency FB", Font.BOLD, 15)); 
+        btnInstrucciones.setBounds(290,260, 110,35);
         
         //Caja para ingresar nombre
         txtNombre = new JTextField("");
         txtNombre.setHorizontalAlignment(JTextField.CENTER);
-        txtNombre.setForeground(Color.GRAY);
+        txtNombre.setForeground(Color.pink);
         txtNombre.setFont(new Font("Agency FB", Font.BOLD, 20)); 
-        txtNombre.setBounds(225,155,240, 30);
+        txtNombre.setBounds(225,215,240, 25);
         
+        //Agrego todos mis componentes
         jpFondoInicial.add(txtNombre);
         jpFondoInicial.add(jlNombre);
-        jpFondoInicial.add(btnIngresar);
-        jpFondoInicial.add(btnAyuda);
+        jpFondoInicial.add(jlTitulo);        
+        jpFondoInicial.add(btnJugar);
+        jpFondoInicial.add(btnInstrucciones);
         
         ManejadorDeEventos manejadorEventos = new ManejadorDeEventos();
         
-        btnIngresar.addActionListener(manejadorEventos);
-        btnAyuda.addActionListener(manejadorEventos);
+        btnJugar.addActionListener(manejadorEventos);
+        btnInstrucciones.addActionListener(manejadorEventos);
         txtNombre.addKeyListener(manejadorEventos);
         
         txtNombre.requestFocusInWindow();
         
 }
     
-   
-    
-    
     
             class ManejadorDeEventos implements ActionListener, KeyListener{
         @Override
         public void actionPerformed(ActionEvent evento){
-            if(evento.getSource() == btnIngresar){                
-                
+            if(evento.getSource() == btnJugar){                
+                VentanaJuego jugar = new VentanaJuego(); 
+                jugar.setVisible(true);
+                String nombreUsuario = txtNombre.getText();
+                System.out.print(nombreUsuario);
+                JOptionPane.showMessageDialog(rootPane, """ 
+                                                        Bienvenid@ a Tamaños,  """   +  nombreUsuario );
+               
+                this.dispose(); // Cierra la primera ventana
             }
-            if(evento.getSource() == btnAyuda){                
+            if(evento.getSource() == btnInstrucciones){                
                 JOptionPane.showMessageDialog(rootPane, """
-                                                        CUCHAU SOY EL RAIO MACQUEEN
-                                                         Y HE PERDIDO MI HETEROSEXUALIDAD¿Nos ayudas a encontrarlas? """);
+                                                        Observa la figura ubicada a la izquierda y luego elige de las opciones proporcionadas la que tenga el mismo tamaño :).""");
             }
         }
         
@@ -128,6 +142,10 @@ public final class VentanaInicial extends JFrame {
         public void keyTyped(KeyEvent e) {
             /*System.out.println("Se digitó la tecla " + e.getKeyChar()+
                     " Con codigo " + e.getKeyCode());*/
+        }
+
+        private void dispose() {
+            throw new UnsupportedOperationException("Not supported yet."); 
         }
                
     }
