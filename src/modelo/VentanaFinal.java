@@ -26,11 +26,18 @@ public class VentanaFinal extends JFrame {
         add(jpFondo);
 
         // Agregar texto
-        JLabel label = new JLabel("Texto de la nueva ventana");
-        label.setBounds(20, 220, 400, 35);
-        label.setForeground(Color.GRAY);
-        label.setFont(new Font("Agency FB", Font.BOLD, 30));
-        jpFondo.add(label);
+        JLabel aciertos = new JLabel(" Usted tuvo __ aciertos");
+        aciertos.setBounds(60, 120, 400, 35);
+        aciertos.setForeground(Color.GRAY);
+        aciertos.setFont(new Font("Agency FB", Font.BOLD, 25));
+        jpFondo.add(aciertos);
+        
+         // Agregar texto2
+        JLabel fallas = new JLabel(" Usted tuvo __ fallas");
+        fallas.setBounds(60, 160, 400, 35);
+        fallas.setForeground(Color.GRAY);
+        fallas.setFont(new Font("Agency FB", Font.BOLD, 25));
+        jpFondo.add(fallas);
         
         botonSalir = new JButton("Salir");
         botonSalir.setFont(new Font("Agency FB", Font.BOLD, 20)); 

@@ -80,7 +80,7 @@ public final class VentanaInicial extends JFrame {
         //Caja para ingresar nombre
         txtNombre = new JTextField("");
         txtNombre.setHorizontalAlignment(JTextField.CENTER);
-        txtNombre.setForeground(Color.pink);
+        txtNombre.setForeground(Color.gray);
         txtNombre.setFont(new Font("Agency FB", Font.BOLD, 20)); 
         txtNombre.setBounds(225,215,240, 25);
         
