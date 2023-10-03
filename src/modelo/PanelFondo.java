@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 public class PanelFondo extends JPanel{
     ImageIcon imagen;
-    String nombre;
+    String nombre; //Nombre de la imagen que será mi fondo
     
     public PanelFondo(String nombre){
         this.nombre = nombre;
@@ -22,7 +22,7 @@ public class PanelFondo extends JPanel{
         this.nombre = nombre;
     }
     
-    @Override
+    
     public void paint(Graphics g){
         imagen = new ImageIcon(getClass().getResource(nombre));
         g.drawImage(imagen.getImage(), 0, 0, null);
@@ -30,7 +30,7 @@ public class PanelFondo extends JPanel{
         super.paint(g);
     }
 }
-    
+ 
     
     
 

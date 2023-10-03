@@ -31,6 +31,7 @@ public final class VentanaInicial extends JFrame {
     //Método constructor
     public VentanaInicial(){
         iniciarComponentes();
+        
     }
     
     //Método donde inicializo todos los componentes que tendrá mi ventana

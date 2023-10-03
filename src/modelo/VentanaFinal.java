@@ -11,7 +11,11 @@ public class VentanaFinal extends JFrame {
     private JButton botonSalir;
     
     public VentanaFinal() {
-        // Configuración de la ventana
+      
+        ponerComponentes();
+        
+    }
+        public void ponerComponentes(){
         setTitle("Tamaños");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(700, 500);
