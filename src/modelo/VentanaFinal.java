@@ -10,12 +10,8 @@ public class VentanaFinal extends JFrame {
     
     private JButton botonSalir;
     
-    public VentanaFinal() {
-      
-        ponerComponentes();
-        
-    }
-        public void ponerComponentes(){
+    public VentanaFinal(int aciertos, int fallos, int total) {
+        // Configuración de la ventana
         setTitle("Tamaños");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(700, 500);
@@ -30,15 +26,21 @@ public class VentanaFinal extends JFrame {
         add(jpFondo);
 
         // Agregar texto
-        JLabel aciertos = new JLabel(" Usted tuvo __ aciertos");
-        aciertos.setBounds(60, 120, 400, 35);
-        aciertos.setForeground(Color.GRAY);
-        aciertos.setFont(new Font("Agency FB", Font.BOLD, 25));
-        jpFondo.add(aciertos);
+        JLabel labeltotal = new JLabel(" Total intentos:  "+ total);
+        labeltotal.setBounds(60, 120, 400, 35);
+        labeltotal.setForeground(Color.GRAY);
+        labeltotal.setFont(new Font("Agency FB", Font.BOLD, 25));
+        jpFondo.add(labeltotal);
+        
+        JLabel labelaciertos = new JLabel(" Usted tuvo  "+  aciertos +  "  aciertos");
+        labelaciertos.setBounds(60, 160, 400, 35);
+        labelaciertos.setForeground(Color.GRAY);
+        labelaciertos.setFont(new Font("Agency FB", Font.BOLD, 25));
+        jpFondo.add(labelaciertos);
         
          // Agregar texto2
-        JLabel fallas = new JLabel(" Usted tuvo __ fallas");
-        fallas.setBounds(60, 160, 400, 35);
+        JLabel fallas = new JLabel(" Usted tuvo  "+ fallos + "  fallas");
+        fallas.setBounds(60, 200, 400, 35);
         fallas.setForeground(Color.GRAY);
         fallas.setFont(new Font("Agency FB", Font.BOLD, 25));
         jpFondo.add(fallas);
