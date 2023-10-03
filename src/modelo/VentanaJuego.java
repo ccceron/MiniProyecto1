@@ -12,8 +12,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 import Modelo.PanelFondo;
-import Modelo.VentanaFinal;
-
 
 
 
@@ -29,12 +27,15 @@ public class VentanaJuego extends JFrame {
     private final JLabel imagenReferencia;
     private JLabel iconos;
     private ImageIcon imagenIzquierda;
+    private ImageIcon imagenClickeada;
     private final JPanel panelBotones;
     private int indiceArrayAleatorio;
-    //public PanelFondo jpFondoJuego;
+    //public PanelFondo jpFondoInicial;
     private final ImageIcon[][] arrayDeArraysDeImagenes;
+    private int aciertos = 0;
+    private int total = 0;
+    private final JLabel puntaje;
 
-    
     public VentanaJuego () {
         
         
@@ -44,37 +45,32 @@ public class VentanaJuego extends JFrame {
         jpFondoInicial.setLayout(null);
         add(jpFondoInicial); */
         
-         // Configuración básica del JFrame
-        setTitle("Tamaños");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        
         // Crear arrays de ImageIcon (imágenes)
         ImageIcon[] cuadrados = {
-                new ImageIcon("src/modelo/Cuadrado1.png"),
-                new ImageIcon("src/modelo/Cuadrado2.png"),
-                new ImageIcon("src/modelo/Cuadrado3.png"),
-                new ImageIcon("src/modelo/Cuadrado4.png")
+                new ImageIcon("src/modelo/Cuadrado1.png","1"),
+                new ImageIcon("src/modelo/Cuadrado2.png","2"),
+                new ImageIcon("src/modelo/Cuadrado3.png","3"),
+                new ImageIcon("src/modelo/Cuadrado4.png","4")
         };
 
         ImageIcon[] triangulos = {
-                new ImageIcon("src/modelo/Triangulo1.png"),
-                new ImageIcon("src/modelo/Triangulo2.png"),
-                new ImageIcon("src/modelo/Triangulo3.png"),
-                new ImageIcon("src/modelo/Triangulo4.png")
+                new ImageIcon("src/modelo/Triangulo1.png","1"),
+                new ImageIcon("src/modelo/Triangulo2.png","2"),
+                new ImageIcon("src/modelo/Triangulo3.png","3"),
+                new ImageIcon("src/modelo/Triangulo4.png","4")
         };
         ImageIcon[] circulos = {
-                new ImageIcon("src/modelo/Circulo1.png"),
-                new ImageIcon("src/modelo/Circulo2.png"),
-                new ImageIcon("src/modelo/Circulo3.png"),
-                new ImageIcon("src/modelo/Circulo4.png")
+                new ImageIcon("src/modelo/Circulo1.png","1"),
+                new ImageIcon("src/modelo/Circulo2.png","2"),
+                new ImageIcon("src/modelo/Circulo3.png","3"),
+                new ImageIcon("src/modelo/Circulo4.png","4")
         };
 
         ImageIcon[] rombo = {
-                new ImageIcon("src/modelo/Rombo1.png"),
-                new ImageIcon("src/modelo/Rombo2.png"),
-                new ImageIcon("src/modelo/Rombo3.png"),
-                new ImageIcon("src/modelo/Rombo4.png")
+                new ImageIcon("src/modelo/Rombo1.png","1"),
+                new ImageIcon("src/modelo/Rombo2.png","2"),
+                new ImageIcon("src/modelo/Rombo3.png","3"),
+                new ImageIcon("src/modelo/Rombo4.png","4")
         };
         
         // Crear un array de arrays de ImageIcon
@@ -86,18 +82,32 @@ public class VentanaJuego extends JFrame {
         }
         Collections.shuffle(Arrays.asList(arrayDeArraysDeImagenes));
 
-       
+        // Configuración básica del JFrame
+        setTitle("Juego");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        // Crear un panel para la izquierda con una imagen y un botón "Terminar"
+        
+        // Crear un panel para la izquierda con una imagen y un botón "Terminar" y el puntaje
         panelIzquierdo = new JPanel(new BorderLayout());
 
         // Crear un panel para una imagen
         panelIzquierdoImagen = new JPanel(new BorderLayout());
         
-        imagenIzquierda = arrayDeArraysDeImagenes[indiceArrayAleatorio][0];
-        imagenReferencia = new JLabel(imagenIzquierda);
-        panelIzquierdoImagen.add(imagenReferencia, BorderLayout.CENTER);
         
+        //Imagen random de referencia
+        Random random = new Random();
+        indiceArrayAleatorio = random.nextInt(arrayDeArraysDeImagenes.length);
+        
+        
+        
+        //Contador
+        puntaje = new JLabel("Contador: 0");
+
+        //Panel Izquierdo Imagen
+        imagenIzquierda = arrayDeArraysDeImagenes[0][indiceArrayAleatorio];
+        imagenReferencia = new JLabel(imagenIzquierda);
+        
+        System.out.println("Imagen a seleccionar: " + imagenReferencia.getIcon());
         
         
         // Agregar JButton "Terminar"
@@ -106,22 +116,22 @@ public class VentanaJuego extends JFrame {
         botonTerminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //System.out.println("Botón 'Terminar' presionado");
-                 VentanaFinal vfinal = new VentanaFinal(); 
-                vfinal.setVisible(true);
-                setVisible(false); //Para cerrar la ventana
+                System.out.println("Botón 'Terminar' presionado");
+                dispose(); //Para cerrar la ventana
                 
                 // Aquí puedes agregar lógica para manejar la acción del botón "Terminar"
                 
             }
         });
-        
-        panelIzquierdoTBoton.add(botonTerminar);
-        
+             
         
         // Agregar paneles al panel izquierdo
-        panelIzquierdoImagen.add(panelIzquierdoTBoton, BorderLayout.SOUTH);
-        panelIzquierdo.add(panelIzquierdoImagen, BorderLayout.CENTER);
+        panelIzquierdoTBoton.add(botonTerminar);
+        panelIzquierdo.add(puntaje,BorderLayout.NORTH);
+        panelIzquierdo.add(imagenReferencia, BorderLayout.CENTER);
+        panelIzquierdo.add(panelIzquierdoTBoton, BorderLayout.SOUTH);
+        
+        panelIzquierdo.setPreferredSize(new Dimension(300, 400));
 
         // Crear un panel para los botones con GridLayout
         panelBotones = new JPanel(new GridLayout(1, arrayDeArraysDeImagenes[0].length));
@@ -130,36 +140,43 @@ public class VentanaJuego extends JFrame {
 
         
         //Crea label con imagen y funcion del click
-        for (ImageIcon imagen : arrayDeArraysDeImagenes[0]) {
-            iconos = new JLabel(imagen);
-            iconos.setPreferredSize(new Dimension(imagen.getIconWidth(), imagen.getIconHeight()));
-
+        for (ImageIcon image : arrayDeArraysDeImagenes[0]) {
+            iconos = new JLabel(image);
+            iconos.setPreferredSize(new Dimension(image.getIconWidth(), image.getIconHeight()));
             iconos.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    System.out.println("Label clickeado: " + imagen.getDescription());
+                    System.out.println("Label clickeado: " + image.getDescription());
+                    imagenClickeada = image;
+                    compararResultados();
+                    
+                    
+                    
+                    // FALTA QUE FUNCIONE EL CONTADOR BIEN
+                    //FALTA ARREGLAR BUG DE "LABEL CLICKEADO"
+                    
+                    
+                    
+                    
                     mostrarSiguienteArrayAleatorio();
                 }
             });
-
             panelBotones.add(iconos);
             // > PENDIENTE POR ARREGLAR < jpFondoInicial.add(iconos);
         }
-
 
         // Agregar los paneles al JFrame
         getContentPane().setLayout(new BorderLayout());
         getContentPane().add(panelIzquierdo, BorderLayout.WEST);
         getContentPane().add(panelBotones, BorderLayout.CENTER);
         
-        
-        pack(); // Ajustar el tamaño del JFrame según su contenido
+        setSize(1400, 450);
         setLocationRelativeTo(null); // Centrar el JFrame en la pantalla
         setVisible(true);
     }
 
     // Método para mostrar el siguiente array aleatorio
-    private void mostrarSiguienteArrayAleatorio() {
+    public void mostrarSiguienteArrayAleatorio() {
         Random random = new Random();
         indiceArrayAleatorio = random.nextInt(arrayDeArraysDeImagenes.length);
 
@@ -170,12 +187,42 @@ public class VentanaJuego extends JFrame {
         System.out.println("Array aleatorio: " + Arrays.toString(arrayDeArraysDeImagenes[indiceArrayAleatorio]));
 
         // Actualizar la imagen en imagenReferencia del panelIzquierdoImagen
-        imagenIzquierda = arrayDeArraysDeImagenes[indiceArrayAleatorio][0];
+        imagenIzquierda = arrayDeArraysDeImagenes[indiceArrayAleatorio][indiceArrayAleatorio];
         imagenReferencia.setIcon(imagenIzquierda);
-
+    
+        System.out.println("Imagen a seleccionar: " + imagenReferencia.getIcon());
+        
         // Actualizar los labels con las nuevas imágenes mezcladas
        for (int i = 0; i < arrayDeArraysDeImagenes[indiceArrayAleatorio].length; i++) {
             iconos = (JLabel) ((JPanel) getContentPane().getComponent(1)).getComponent(i);
             iconos.setIcon(arrayDeArraysDeImagenes[indiceArrayAleatorio][i]);
+            
         }
-    }}
+    }   
+
+
+    private void compararResultados() {
+       
+        // Comparar resultados
+        //FALTA VER SI FUNCIONA
+        if ( imagenClickeada.equals(imagenIzquierda) ) {
+            
+            aciertos++;
+            total++;
+            actualizarLabelContador();
+            
+        }else{
+            
+            total++;
+            
+        }
+  
+    }
+
+    private void actualizarLabelContador() {
+        // Actualizar el texto del JLabel con el valor del contador
+        puntaje.setText("Puntaje: " + aciertos);
+        panelIzquierdo.repaint();
+        panelBotones.repaint();
+    }
+}
