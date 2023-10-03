@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/w10/Documents/NetBeansProjects/MiniProyecto1/src/modelo/Ventana.java</file>
+            <file>file:/C:/Users/w10/Documents/NetBeansProjects/MiniProyecto1/src/modelo/VentanaInicial.java</file>
             <file>file:/C:/Users/w10/Documents/NetBeansProjects/MiniProyecto1/src/miniproyecto1/Principal.java</file>
-            <file>file:/C:/Users/w10/Documents/NetBeansProjects/MiniProyecto1/src/modelo/VentanaContenedora.java</file>
-            <file>file:/C:/Users/w10/Documents/NetBeansProjects/MiniProyecto1/src/modelo/descarga.jpg</file>
-            <file>file:/C:/Users/w10/Documents/NetBeansProjects/MiniProyecto1/src/modelo/Ventana_2.java</file>
+            <file>file:/C:/Users/w10/Documents/NetBeansProjects/MiniProyecto1/src/modelo/VentanaJuego.java</file>
+            <file>file:/C:/Users/w10/Documents/NetBeansProjects/MiniProyecto1/src/modelo/PanelFondo.java</file>
         </group>
     </open-files>
 </project-private>

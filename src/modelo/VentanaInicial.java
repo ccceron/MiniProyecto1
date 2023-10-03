@@ -103,20 +103,31 @@ public final class VentanaInicial extends JFrame {
         txtNombre.requestFocusInWindow();
         
 }
+    private void iniciarVentanaJuego(){
+        String nombre =txtNombre.getText();
+        if(!nombre.trim().isEmpty() || nombre.trim().length() > 0){
+            VentanaJuego jugar = new VentanaJuego(); 
+            dispose();               
+            String nombreUsuario = txtNombre.getText();
+            JOptionPane.showMessageDialog(rootPane, """ 
+                                                        Bienvenid@ a Tamaños,  """   +  nombreUsuario );
+               
+          
+        } 
+        else {
+            JOptionPane.showMessageDialog(null,"Por favor ingrese su nombre", 
+                    "Advertencia", JOptionPane.ERROR_MESSAGE);
+            txtNombre.requestFocusInWindow();
+        }
+    }    
     
     
             class ManejadorDeEventos implements ActionListener, KeyListener{
         @Override
         public void actionPerformed(ActionEvent evento){
-            if(evento.getSource() == btnJugar){                
-                VentanaJuego jugar = new VentanaJuego(); 
-                jugar.setVisible(true);
-                String nombreUsuario = txtNombre.getText();
-                System.out.print(nombreUsuario);
-                JOptionPane.showMessageDialog(rootPane, """ 
-                                                        Bienvenid@ a Tamaños,  """   +  nombreUsuario );
-               
-                this.dispose(); // Cierra la primera ventana
+            if(evento.getSource() == btnJugar){
+
+                iniciarVentanaJuego();
             }
             if(evento.getSource() == btnInstrucciones){                
                 JOptionPane.showMessageDialog(rootPane, """
@@ -150,4 +161,3 @@ public final class VentanaInicial extends JFrame {
                
     }
 }            
-       

@@ -15,6 +15,7 @@ import Modelo.PanelFondo;
 
 
 
+
 public class VentanaJuego extends JFrame {
     
     public static void main(String[] args) {
@@ -29,7 +30,7 @@ public class VentanaJuego extends JFrame {
     private ImageIcon imagenIzquierda;
     private final JPanel panelBotones;
     private int indiceArrayAleatorio;
-    //public PanelFondo jpFondoInicial;
+    //public PanelFondo jpFondoJuego;
     private final ImageIcon[][] arrayDeArraysDeImagenes;
 
     public VentanaJuego () {
@@ -94,6 +95,7 @@ public class VentanaJuego extends JFrame {
         panelIzquierdoImagen.add(imagenReferencia, BorderLayout.CENTER);
         
         
+        
         // Agregar JButton "Terminar"
         panelIzquierdoTBoton = new JPanel();
         JButton botonTerminar = new JButton("Terminar");
@@ -101,7 +103,8 @@ public class VentanaJuego extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Botón 'Terminar' presionado");
-                dispose(); //Para cerrar la ventana
+                
+                setVisible(false); //Para cerrar la ventana
                 
                 // Aquí puedes agregar lógica para manejar la acción del botón "Terminar"
                 
