@@ -118,6 +118,7 @@ public class VentanaJuego extends JFrame {
         // Agregar JButton "Terminar"
         panelIzquierdoTBoton = new JPanel();
         JButton botonTerminar = new JButton("Terminar");
+        //botonTerminar.setBounds(300,200, 110,35);
         botonTerminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
