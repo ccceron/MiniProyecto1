@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 import Modelo.PanelFondo;
+import Modelo.VentanaFinal;
 
 
 
@@ -116,9 +117,11 @@ public class VentanaJuego extends JFrame {
         botonTerminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Botón 'Terminar' presionado");
-                dispose(); //Para cerrar la ventana
-                
+               
+                //Para cerrar la ventana
+                VentanaFinal vfinal = new VentanaFinal(); 
+                setVisible(true);
+                dispose();
                 // Aquí puedes agregar lógica para manejar la acción del botón "Terminar"
                 
             }
