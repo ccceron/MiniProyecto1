@@ -45,10 +45,7 @@ public final class VentanaInicial extends JFrame {
         
         
         Toolkit miPantalla = Toolkit.getDefaultToolkit();
-        //para poner icono cambiar ubicacion
-        //Image miIcono = miPantalla.getImage("src/imagenes/icono.png");
-	//setIconImage(miIcono);
-               
+       
         
         
         //Configuración del Encabezado
@@ -60,9 +57,9 @@ public final class VentanaInicial extends JFrame {
         
         //Jlabel donde pondré el titulo
         jlTitulo = new JLabel("T  A  M  A  Ñ  O  S",SwingConstants.CENTER );
-        jlTitulo.setBounds(150,70, 400,35);
+        jlTitulo.setBounds(150,80, 400,35);
         jlTitulo.setForeground(Color.GRAY);
-        jlTitulo.setFont(new Font("Agency FB", Font.BOLD, 50)); 
+        jlTitulo.setFont(new Font("Agency FB", Font.BOLD, 40)); 
         
         //Jlabel donde preguntaré el nombre
         jlNombre = new JLabel("Ingresa tu nombre",SwingConstants.CENTER );
@@ -72,12 +69,12 @@ public final class VentanaInicial extends JFrame {
         
         //Boton para iniciar juego
         btnJugar = new JButton("Jugar");
-        btnJugar.setFont(new Font("Agency FB", Font.BOLD, 15));
-        btnJugar.setBounds(290,300, 110,35);
+        btnJugar.setFont(new Font("Agency FB", Font.BOLD, 20));
+        btnJugar.setBounds(290,310, 110,35);
         
         //Botón para instrucciones
         btnInstrucciones = new JButton("Intrucciones");
-        btnInstrucciones.setFont(new Font("Agency FB", Font.BOLD, 15)); 
+        btnInstrucciones.setFont(new Font("Agency FB", Font.BOLD, 20)); 
         btnInstrucciones.setBounds(290,260, 110,35);
         
         //Caja para ingresar nombre

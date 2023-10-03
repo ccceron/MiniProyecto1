@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 import Modelo.PanelFondo;
+import Modelo.VentanaFinal;
 
 
 
@@ -80,7 +81,7 @@ public class VentanaJuego extends JFrame {
         Collections.shuffle(Arrays.asList(arrayDeArraysDeImagenes));
 
         // Configuración básica del JFrame
-        setTitle("Juego");
+        setTitle("Tamaños");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         
@@ -103,7 +104,8 @@ public class VentanaJuego extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Botón 'Terminar' presionado");
-                
+                 VentanaFinal vfinal = new VentanaFinal(); 
+                vfinal.setVisible(true);
                 setVisible(false); //Para cerrar la ventana
                 
                 // Aquí puedes agregar lógica para manejar la acción del botón "Terminar"
@@ -173,5 +175,4 @@ public class VentanaJuego extends JFrame {
             iconos = (JLabel) ((JPanel) getContentPane().getComponent(1)).getComponent(i);
             iconos.setIcon(arrayDeArraysDeImagenes[indiceArrayAleatorio][i]);
         }
-    }
-}
+    }}
