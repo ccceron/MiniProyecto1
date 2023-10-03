@@ -34,6 +34,7 @@ public class VentanaJuego extends JFrame {
     //public PanelFondo jpFondoJuego;
     private final ImageIcon[][] arrayDeArraysDeImagenes;
 
+    
     public VentanaJuego () {
         
         
@@ -42,6 +43,11 @@ public class VentanaJuego extends JFrame {
         jpFondoInicial.setSize(1400,700);     
         jpFondoInicial.setLayout(null);
         add(jpFondoInicial); */
+        
+         // Configuración básica del JFrame
+        setTitle("Tamaños");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         
         // Crear arrays de ImageIcon (imágenes)
         ImageIcon[] cuadrados = {
@@ -80,10 +86,7 @@ public class VentanaJuego extends JFrame {
         }
         Collections.shuffle(Arrays.asList(arrayDeArraysDeImagenes));
 
-        // Configuración básica del JFrame
-        setTitle("Tamaños");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+       
         
         // Crear un panel para la izquierda con una imagen y un botón "Terminar"
         panelIzquierdo = new JPanel(new BorderLayout());
@@ -103,7 +106,7 @@ public class VentanaJuego extends JFrame {
         botonTerminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Botón 'Terminar' presionado");
+                //System.out.println("Botón 'Terminar' presionado");
                  VentanaFinal vfinal = new VentanaFinal(); 
                 vfinal.setVisible(true);
                 setVisible(false); //Para cerrar la ventana

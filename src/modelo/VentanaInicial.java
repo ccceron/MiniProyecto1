@@ -128,7 +128,8 @@ public final class VentanaInicial extends JFrame {
             }
             if(evento.getSource() == btnInstrucciones){                
                 JOptionPane.showMessageDialog(rootPane, """
-                                                        Observa la figura ubicada a la izquierda y luego elige de las opciones proporcionadas la que tenga el mismo tamaño :).""");
+                                                        Observa la figura ubicada a la izquierda y luego elige de las opciones proporcionadas la que tenga el mismo tamaño :)."""
+                );
             }
         }
         
